@@ -1,0 +1,262 @@
+<!-- WordPress 直接套用版：請將此段程式碼直接貼入「自訂 HTML」區塊 -->
+
+<!-- 1. 外部資源載入 (CSS & Fonts) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+    
+    /* 樣式範圍限定與修正 */
+    .wp-custom-site-wrapper {
+        font-family: 'Noto Sans TC', sans-serif;
+        scroll-behavior: smooth;
+        background-color: #111827; /* bg-gray-900 */
+        color: white;
+    }
+    .swiper-pagination-bullet-active { background: #3b82f6 !important; }
+    .glass-effect { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+    .service-card { transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-10px); }
+    
+    /* 修正導航欄在 WordPress 管理列下方的位移 */
+    .admin-bar .fixed-nav { top: 32px; }
+    @media screen and (max-width: 782px) {
+        .admin-bar .fixed-nav { top: 46px; }
+    }
+</style>
+
+<div class="wp-custom-site-wrapper">
+
+    <!-- [第一屏：頁首導航] -->
+    <nav class="fixed-nav fixed w-full z-[999] glass-effect border-b border-gray-800 top-0 left-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 font-bold text-2xl tracking-wider text-blue-500 uppercase">Marketing.Pro</div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6 text-sm font-medium">
+                        <a href="#hero" class="hover:text-blue-400">首頁</a>
+                        <a href="#cases" class="hover:text-blue-400">成功案例</a>
+                        <a href="#services" class="hover:text-blue-400">服務項目</a>
+                        <a href="#about" class="hover:text-blue-400">關於我們</a>
+                        <a href="#contact" class="bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition">立即諮詢</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- [第一屏：英雄輪播圖] -->
+    <section id="hero" class="relative h-screen">
+        <div class="swiper mySwiper h-full">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide relative flex items-center justify-center bg-black">
+                    <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover" alt="廣告代操">
+                    <div class="relative z-20 text-center px-4 max-w-4xl">
+                        <span class="text-blue-500 font-bold tracking-widest mb-4 block">專業廣告投放</span>
+                        <h2 class="text-5xl md:text-7xl font-bold mb-6">廣告代操服務</h2>
+                        <p class="text-xl md:text-2xl text-gray-300 mb-8">精準數據驅動，將每一分廣告預算轉化為實質收益。</p>
+                        <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-700 transition">預約免費診斷</a>
+                    </div>
+                </div>
+                <div class="swiper-slide relative flex items-center justify-center bg-black">
+                    <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover" alt="短影音">
+                    <div class="relative z-20 text-center px-4">
+                        <span class="text-purple-500 font-bold tracking-widest mb-4 block">社群流量密碼</span>
+                        <h2 class="text-5xl md:text-7xl font-bold mb-6">短影音拍攝剪輯</h2>
+                        <p class="text-xl md:text-2xl text-gray-300 mb-8">用 15 秒抓住眼球，引爆您的品牌社交影響力。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next text-white opacity-50 hover:opacity-100"></div>
+            <div class="swiper-button-prev text-white opacity-50 hover:opacity-100"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- [第二屏：成功案例與見證] -->
+    <section id="cases" class="py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-blue-500">成功案例與客戶見證</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-blue-500 text-2xl mb-4 font-bold">ROAS 12.5x</div>
+                    <p class="text-gray-300 italic mb-6">「這是我合作過最注重數據回報的行銷團隊，廣告投放的精準度遠超預期。」</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full mr-3 flex items-center justify-center font-bold">A</div>
+                        <div><div class="font-bold">陳先生</div><div class="text-xs text-gray-500">品牌創辦人</div></div>
+                    </div>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-blue-500 text-2xl mb-4 font-bold">300% 成長</div>
+                    <p class="text-gray-300 italic mb-6">「短影音內容製作非常有深度，不僅增加了粉絲數，更直接帶動了線下量。」</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-purple-600 rounded-full mr-3 flex items-center justify-center font-bold">L</div>
+                        <div><div class="font-bold">林小姐</div><div class="text-xs text-gray-500">餐飲經理</div></div>
+                    </div>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+                    <div class="text-blue-500 text-2xl mb-4 font-bold">課程好評</div>
+                    <p class="text-gray-300 italic mb-6">「課程全是實操經驗，讓我們在投放初期少走了很多彎路。」</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-600 rounded-full mr-3 flex items-center justify-center font-bold">W</div>
+                        <div><div class="font-bold">王先生</div><div class="text-xs text-gray-500">工作室主理人</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [第三屏：專案及服務分區] -->
+    <section id="services" class="py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-widest">我們的專業領域</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-8 bg-gray-900 rounded-2xl service-card border border-gray-700 group hover:border-blue-500">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-lg flex items-center justify-center text-2xl text-blue-500 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">短影音行銷</h3>
+                    <p class="text-gray-400 text-sm">腳本、拍攝、剪輯，專注於 TikTok、IG Reels 與 Shorts 高流量創作。</p>
+                </div>
+                <div class="p-8 bg-gray-900 rounded-2xl service-card border border-gray-700 group hover:border-blue-500">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-lg flex items-center justify-center text-2xl text-blue-500 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">品牌行銷</h3>
+                    <p class="text-gray-400 text-sm">精準定位與視覺設計，建立品牌獨特的市場佔有率與認同。</p>
+                </div>
+                <div class="p-8 bg-gray-900 rounded-2xl service-card border border-gray-700 group hover:border-blue-500">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-lg flex items-center justify-center text-2xl text-blue-500 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">行銷顧問</h3>
+                    <p class="text-gray-400 text-sm">提供策略優化與增長診斷，降低企業決策風險。</p>
+                </div>
+                <div class="p-8 bg-gray-900 rounded-2xl service-card border border-gray-700 group hover:border-blue-500">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-lg flex items-center justify-center text-2xl text-blue-500 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">廣告投放</h3>
+                    <p class="text-gray-400 text-sm">專業操作 FB/IG/Google 廣告，持續降低獲客成本。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [第四屏：服務流程] -->
+    <section id="process" class="py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16">對接與排程流程</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center mx-auto text-xl font-bold mb-4 text-blue-500">01</div>
+                    <h4 class="font-bold mb-2 text-white">需求對接</h4>
+                    <p class="text-sm text-gray-500">預計 1-2 工作日</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center mx-auto text-xl font-bold mb-4 text-blue-500">02</div>
+                    <h4 class="font-bold mb-2 text-white">排程規劃</h4>
+                    <p class="text-sm text-gray-500">預計 3-5 工作日</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center mx-auto text-xl font-bold mb-4 text-blue-500">03</div>
+                    <h4 class="font-bold mb-2 text-white">執行製作</h4>
+                    <p class="text-sm text-gray-500">視專案規模而定</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center mx-auto text-xl font-bold mb-4 text-blue-500">04</div>
+                    <h4 class="font-bold mb-2 text-white">成果回報</h4>
+                    <p class="text-sm text-gray-500">月度/季度彙報</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [第五屏：核心團隊介紹] -->
+    <section id="about" class="py-24 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16">核心團隊與作品</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-gray-900 rounded-3xl p-8 text-center border border-gray-700 hover:border-blue-600 transition group">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" class="w-32 h-32 mx-auto rounded-full object-cover mb-6 border-4 border-blue-600 p-1" alt="David">
+                    <h3 class="text-xl font-bold mb-1">王大明 (David)</h3>
+                    <p class="text-blue-500 text-xs font-bold mb-4">Founder / CMO</p>
+                    <p class="text-gray-400 text-sm mb-6">曾操盤過億廣告預算，擅長戰略規劃。</p>
+                    <a href="#" class="block w-full py-3 bg-gray-800 rounded-xl text-sm font-bold group-hover:bg-blue-600">個人作品集</a>
+                </div>
+                <div class="bg-gray-900 rounded-3xl p-8 text-center border border-gray-700 hover:border-purple-600 transition group">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" class="w-32 h-32 mx-auto rounded-full object-cover mb-6 border-4 border-purple-600 p-1" alt="Linda">
+                    <h3 class="text-xl font-bold mb-1">李小華 (Linda)</h3>
+                    <p class="text-purple-500 text-xs font-bold mb-4">Creative Director</p>
+                    <p class="text-gray-400 text-sm mb-6">視覺美學專家，擅長社群流量爆點。</p>
+                    <a href="#" class="block w-full py-3 bg-gray-800 rounded-xl text-sm font-bold group-hover:bg-purple-600">查看設計案例</a>
+                </div>
+                <div class="bg-gray-900 rounded-3xl p-8 text-center border border-gray-700 hover:border-green-600 transition group">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" class="w-32 h-32 mx-auto rounded-full object-cover mb-6 border-4 border-green-600 p-1" alt="Kevin">
+                    <h3 class="text-xl font-bold mb-1">陳阿強 (Kevin)</h3>
+                    <p class="text-green-500 text-xs font-bold mb-4">Head of Content</p>
+                    <p class="text-gray-400 text-sm mb-6">短影音爆品推手，專精劇本創作。</p>
+                    <a href="#" class="block w-full py-3 bg-gray-800 rounded-xl text-sm font-bold group-hover:bg-green-600">查看影音案例</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [第六屏：聯絡表單] -->
+    <section id="contact" class="py-24 bg-gray-900">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-white">立即開啟諮詢</h2>
+                <p class="text-gray-500 text-sm">請留下您的聯絡資訊，我們將儘速聯繫。</p>
+            </div>
+            <form class="space-y-6 text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="姓名" class="w-full bg-gray-800 rounded-xl p-4 text-white outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" placeholder="Email" class="w-full bg-gray-800 rounded-xl p-4 text-white outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <select class="w-full bg-gray-800 rounded-xl p-4 text-white outline-none">
+                    <option>短影音行銷</option>
+                    <option>品牌行銷</option>
+                    <option>廣告代操</option>
+                </select>
+                <textarea rows="4" placeholder="需求詳述" class="w-full bg-gray-800 rounded-xl p-4 text-white outline-none"></textarea>
+                <button type="button" class="w-full bg-blue-600 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-xl shadow-blue-900/40">送出申請</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- [第七屏：頁尾] -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-blue-500 font-bold mb-4 uppercase">Marketing.Pro</div>
+            <p class="text-gray-600 text-xs mb-6">台北市大安區行銷路一號 | +886 02 8765 4321</p>
+            <div class="flex justify-center space-x-6 text-gray-500">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- 3. 腳本初始化 -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // 確保頁面加載後執行 Swiper
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: { delay: 5000 },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        });
+    });
+</script>
