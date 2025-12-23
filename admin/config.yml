@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway # 使用 Netlify 的 Git Gateway 服務
+  branch: main      # 對應你 GitHub 的分支名稱
+
+media_folder: "images" # 圖片上傳後的儲存位置
+public_folder: "/images" # 圖片在網頁中的引用路徑
+
+collections:
+  - name: "pages"
+    label: "網頁內容管理"
+    files:
+      - label: "首頁公司介紹"
+        name: "home"
+        file: "content/home.json" # 將文字存成 JSON，方便 JS 讀取
+        fields:
+          - { label: "公司名稱", name: "company_name", widget: "string" }
+          - { label: "簡介文字", name: "description", widget: "text" }
+          - { label: "主視覺圖片", name: "hero_image", widget: "image" }
+
+  - name: "articles"
+    label: "公司最新文章"
+    folder: "content/articles" # 文章會存成獨立檔案
+    create: true # 允許新增文章
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "文章標題", name: "title", widget: "string" }
+      - { label: "發佈日期", name: "date", widget: "datetime" }
+      - { label: "封面圖片", name: "thumbnail", widget: "image" }
+      - { label: "文章內容", name: "body", widget: "markdown" }
