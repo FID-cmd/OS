@@ -40,9 +40,16 @@
         .section-card {
             transition: all 0.3s ease;
         }
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        @media (min-width: 1024px) {
+            .section-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            }
+        }
+
+        /* 行動版選單過渡 */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
         }
 
         /* 自定義捲軸 */
@@ -65,36 +72,56 @@
 </head>
 <body class="bg-gray-50 text-slate-800">
 
-    <!-- 導覽列 -->
-    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- 響應式導覽列 -->
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0">
-                    <span class="text-2xl font-black tracking-tighter text-gradient">MARKETING PRO</span>
+                    <span class="text-xl md:text-2xl font-black tracking-tighter text-gradient">MARKETING PRO</span>
                 </div>
-                <div class="hidden md:flex space-x-10 items-center">
+                
+                <!-- 桌機選單 -->
+                <div class="hidden md:flex space-x-8 lg:space-x-10 items-center">
                     <a href="#home" class="text-sm font-bold hover:text-blue-600 transition">首頁</a>
                     <a href="#services" class="text-sm font-bold hover:text-blue-600 transition">服務項目</a>
                     <a href="#process" class="text-sm font-bold hover:text-blue-600 transition">合作流程</a>
                     <a href="#about" class="text-sm font-bold hover:text-blue-600 transition">關於我們</a>
                     <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">立即預約</a>
                 </div>
+
+                <!-- 手機版漢堡按鈕 -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="p-2 text-slate-600 focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 手機版下拉選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 shadow-xl overflow-hidden">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-4 py-3 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition">首頁</a>
+                <a href="#services" class="block px-4 py-3 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition">服務項目</a>
+                <a href="#process" class="block px-4 py-3 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition">合作流程</a>
+                <a href="#about" class="block px-4 py-3 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition">關於我們</a>
+                <a href="#contact" class="block px-4 py-3 bg-blue-600 text-white text-center font-bold rounded-xl transition">立即預約</a>
             </div>
         </div>
     </nav>
 
     <!-- 第一屏：服務項目輪播 (Hero Section) -->
-    <section id="home" class="relative h-screen overflow-hidden">
+    <section id="home" class="relative min-h-[600px] h-[90vh] md:h-screen overflow-hidden">
         <!-- Slide 1: 廣告代操 -->
         <div class="slide active absolute inset-0">
             <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Ads">
             <div class="relative z-20 max-w-7xl mx-auto px-6 h-full flex items-center">
                 <div class="max-w-2xl text-white" data-aos="fade-right">
-                    <span class="inline-block px-3 py-1 bg-blue-600 text-xs font-bold rounded mb-4 uppercase tracking-widest">Advertising</span>
-                    <h1 class="text-6xl font-black mb-6 leading-tight">精準廣告代操</h1>
-                    <p class="text-xl mb-8 opacity-80 leading-relaxed">利用 AI 數據分析技術，精準捕捉您的潛在客群，讓每一分預算都發揮最大邊際效應。</p>
-                    <a href="#contact" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition inline-block">免費診斷廣告帳戶</a>
+                    <span class="inline-block px-3 py-1 bg-blue-600 text-[10px] md:text-xs font-bold rounded mb-4 uppercase tracking-widest">Advertising</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">精準廣告代操</h1>
+                    <p class="text-base md:text-xl mb-8 opacity-80 leading-relaxed">利用 AI 數據分析技術，精準捕捉您的潛在客群。</p>
+                    <a href="#contact" class="w-full sm:w-auto text-center bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition inline-block">免費診斷廣告帳戶</a>
                 </div>
             </div>
         </div>
@@ -104,10 +131,10 @@
             <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Design">
             <div class="relative z-20 max-w-7xl mx-auto px-6 h-full flex items-center">
                 <div class="max-w-2xl text-white">
-                    <span class="inline-block px-3 py-1 bg-purple-600 text-xs font-bold rounded mb-4 uppercase tracking-widest">Design</span>
-                    <h1 class="text-6xl font-black mb-6 leading-tight">高轉化銷售頁設計</h1>
-                    <p class="text-xl mb-8 opacity-80 leading-relaxed">美感與邏輯兼具。我們打造不僅好看，更具備強大轉化能力的 Landing Page。</p>
-                    <a href="#contact" class="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition inline-block">查看設計案例</a>
+                    <span class="inline-block px-3 py-1 bg-purple-600 text-[10px] md:text-xs font-bold rounded mb-4 uppercase tracking-widest">Design</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">高轉化銷售頁設計</h1>
+                    <p class="text-base md:text-xl mb-8 opacity-80 leading-relaxed">美感與邏輯兼具。我們打造不僅好看，更具備強大轉化能力的 Landing Page。</p>
+                    <a href="#contact" class="w-full sm:w-auto text-center bg-white text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-50 transition inline-block">查看設計案例</a>
                 </div>
             </div>
         </div>
@@ -117,10 +144,10 @@
             <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Video">
             <div class="relative z-20 max-w-7xl mx-auto px-6 h-full flex items-center">
                 <div class="max-w-2xl text-white">
-                    <span class="inline-block px-3 py-1 bg-red-600 text-xs font-bold rounded mb-4 uppercase tracking-widest">Short Video</span>
-                    <h1 class="text-6xl font-black mb-6 leading-tight">短影音拍攝剪輯</h1>
-                    <p class="text-xl mb-8 opacity-80 leading-relaxed">在 TikTok、Reels 獲取流量紅利！我們負責從腳本企劃到成片剪輯的一條龍服務。</p>
-                    <a href="#contact" class="bg-white text-red-600 px-8 py-4 rounded-xl font-bold hover:bg-red-50 transition inline-block">了解流量密碼</a>
+                    <span class="inline-block px-3 py-1 bg-red-600 text-[10px] md:text-xs font-bold rounded mb-4 uppercase tracking-widest">Short Video</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">短影音拍攝剪輯</h1>
+                    <p class="text-base md:text-xl mb-8 opacity-80 leading-relaxed">在 TikTok、Reels 獲取流量紅利！</p>
+                    <a href="#contact" class="w-full sm:w-auto text-center bg-white text-red-600 px-8 py-4 rounded-xl font-bold hover:bg-red-50 transition inline-block">了解流量密碼</a>
                 </div>
             </div>
         </div>
@@ -130,89 +157,89 @@
             <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Course">
             <div class="relative z-20 max-w-7xl mx-auto px-6 h-full flex items-center">
                 <div class="max-w-2xl text-white">
-                    <span class="inline-block px-3 py-1 bg-green-600 text-xs font-bold rounded mb-4 uppercase tracking-widest">Education</span>
-                    <h1 class="text-6xl font-black mb-6 leading-tight">專業行銷課程</h1>
-                    <p class="text-xl mb-8 opacity-80 leading-relaxed">授人以魚不如授人以漁。我們提供企業內訓與線上實戰課程，培育頂尖行銷人才。</p>
-                    <a href="#contact" class="bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition inline-block">查看最新課表</a>
+                    <span class="inline-block px-3 py-1 bg-green-600 text-[10px] md:text-xs font-bold rounded mb-4 uppercase tracking-widest">Education</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">專業行銷課程</h1>
+                    <p class="text-base md:text-xl mb-8 opacity-80 leading-relaxed">培育頂尖行銷人才，協助企業內訓升級。</p>
+                    <a href="#contact" class="w-full sm:w-auto text-center bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition inline-block">查看最新課表</a>
                 </div>
             </div>
         </div>
 
         <!-- 輪播控制點 -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
-            <button onclick="setSlide(0)" class="nav-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
-            <button onclick="setSlide(1)" class="nav-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
-            <button onclick="setSlide(2)" class="nav-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
-            <button onclick="setSlide(3)" class="nav-dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+        <div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
+            <button onclick="manualSetSlide(0)" class="nav-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+            <button onclick="manualSetSlide(1)" class="nav-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+            <button onclick="manualSetSlide(2)" class="nav-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/40 transition-all duration-300"></button>
+            <button onclick="manualSetSlide(3)" class="nav-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-white/40 transition-all duration-300"></button>
         </div>
     </section>
 
     <!-- 第二屏：成功案例 / 客戶見證 -->
-    <section id="testimonials" class="py-32 bg-white">
+    <section id="testimonials" class="py-20 md:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
-                <div>
-                    <h2 class="text-4xl font-black mb-4">成功案例與評價</h2>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16" data-aos="fade-up">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-black mb-4">成功案例與評價</h2>
                     <p class="text-slate-500 max-w-md">超過 200+ 企業的共同選擇，我們用數字證明實力。</p>
                 </div>
-                <div class="mt-6 md:mt-0 flex items-center space-x-4">
-                    <span class="text-5xl font-black text-blue-600">4.9/5</span>
-                    <div class="text-sm font-bold text-slate-400">平均客戶滿意度<br>基於 500+ 真實回饋</div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-4xl md:text-5xl font-black text-blue-600">4.9/5</span>
+                    <div class="text-[10px] md:text-sm font-bold text-slate-400 uppercase tracking-tighter">平均客戶滿意度<br>基於 500+ 回饋</div>
                 </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- 見證 1 -->
-                <div class="p-10 bg-slate-50 rounded-3xl relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-8 md:p-10 bg-slate-50 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex text-yellow-400 mb-6">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
                     </div>
-                    <p class="text-lg text-slate-700 font-medium mb-8">「我們轉戰電商的第一年非常迷茫，直到遇到 Marketing Pro。他們不只代操廣告，更幫我們梳理了產品策略，三個月內業績翻了兩倍！」</p>
+                    <p class="text-base md:text-lg text-slate-700 font-medium mb-8">「三個月內業績翻了兩倍！Marketing Pro 不只代操廣告，更幫我們梳理了產品策略。」</p>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xl mr-4">W</div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg mr-4">W</div>
                         <div>
                             <h4 class="font-bold">Wilson Wang</h4>
-                            <p class="text-sm text-slate-400">某連鎖服飾品牌創辦人</p>
+                            <p class="text-xs text-slate-400">連鎖服飾創辦人</p>
                         </div>
                     </div>
                 </div>
-                <!-- 見證 2 -->
-                <div class="p-10 bg-slate-50 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <!-- 見證 2 (手機隱藏，平板顯示) -->
+                <div class="p-8 md:p-10 bg-slate-50 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex text-yellow-400 mb-6">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
                     </div>
-                    <p class="text-lg text-slate-700 font-medium mb-8">「短影音的腳本節奏非常精準，第一支影片在 TikTok 就突破 50 萬播放，帶來了大量的精準詢盤。」</p>
+                    <p class="text-base md:text-lg text-slate-700 font-medium mb-8">「短影音內容精準抓住受眾注意力，單支影片在 TikTok 突破 50 萬播放。」</p>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-xl mr-4">S</div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold text-lg mr-4">S</div>
                         <div>
                             <h4 class="font-bold">Sophia Lee</h4>
-                            <p class="text-sm text-slate-400">知名美妝 KOL</p>
+                            <p class="text-xs text-slate-400">美妝品牌負責人</p>
                         </div>
                     </div>
                 </div>
                 <!-- 見證 3 -->
-                <div class="p-10 bg-slate-50 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-8 md:p-10 bg-slate-50 rounded-3xl hidden lg:block" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex text-yellow-400 mb-6">
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
-                        <i data-lucide="star" class="fill-current w-5 h-5"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
                     </div>
-                    <p class="text-lg text-slate-700 font-medium mb-8">「行銷顧問服務非常有價值，透過數據診斷找出了網站轉化的瓶頸，優化後轉單率提升了 45%。」</p>
+                    <p class="text-base md:text-lg text-slate-700 font-medium mb-8">「行銷顧問服務幫我們找出網站瓶頸，優化後轉單率提升 45%，成效顯著。」</p>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xl mr-4">K</div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-lg mr-4">K</div>
                         <div>
                             <h4 class="font-bold">Kevin Chen</h4>
-                            <p class="text-sm text-slate-400">科技軟體公司營運長</p>
+                            <p class="text-xs text-slate-400">科技軟體公司營運長</p>
                         </div>
                     </div>
                 </div>
@@ -221,218 +248,118 @@
     </section>
 
     <!-- 第三屏：專案及服務 (細分四類) -->
-    <section id="services" class="py-32 bg-slate-50">
+    <section id="services" class="py-20 md:py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">Our Expertise</span>
-                <h2 class="text-4xl font-black mt-4">量身打造的增長方案</h2>
+            <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
+                <span class="text-blue-600 font-bold tracking-widest uppercase text-xs">Our Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-black mt-4">響應式增長方案</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 <!-- 短影音行銷 -->
-                <div class="section-card bg-white p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-right">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-blue-200">
-                        <i data-lucide="play-circle" class="w-8 h-8"></i>
+                <div class="section-card bg-white p-8 md:p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-right">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-xl shadow-blue-200">
+                        <i data-lucide="play-circle" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4">短影音行銷</h3>
-                    <p class="text-slate-500 mb-8 leading-relaxed">我們專注於 TikTok、IG Reels 與 YouTube Shorts。從爆款腳本撰寫、專業動態拍攝到具備高留存率的後期剪輯，協助您的品牌在 15 秒內抓住目光。</p>
-                    <ul class="space-y-3 text-sm font-bold text-slate-600 mb-8">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> 熱門趨勢腳本企劃</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> 高清 4K 直式拍攝</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> 流量爆發式剪輯技術</li>
-                    </ul>
-                    <a href="#" class="mt-auto font-bold text-blue-600 flex items-center hover:underline">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">短影音行銷</h3>
+                    <p class="text-slate-500 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">專注 TikTok、Reels 與 Shorts。一條龍腳本企劃到後期剪輯。</p>
+                    <a href="#" class="mt-auto font-bold text-blue-600 flex items-center hover:underline text-sm">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
                 </div>
 
                 <!-- 品牌行銷 -->
-                <div class="section-card bg-white p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-left">
-                    <div class="w-16 h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-purple-200">
-                        <i data-lucide="palette" class="w-8 h-8"></i>
+                <div class="section-card bg-white p-8 md:p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-left">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-600 text-white rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-xl shadow-purple-200">
+                        <i data-lucide="palette" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4">品牌行銷</h3>
-                    <p class="text-slate-500 mb-8 leading-relaxed">建立您的品牌靈魂。我們提供整套品牌視覺識別系統 (VI) 設計、品牌故事編撰，以及長期內容經營策略，提升品牌的心理溢價空間。</p>
-                    <ul class="space-y-3 text-sm font-bold text-slate-600 mb-8">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-600 mr-2"></i> 品牌核心價值梳理</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-600 mr-2"></i> 視覺美學統一設計</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-600 mr-2"></i> 社群品牌調性建立</li>
-                    </ul>
-                    <a href="#" class="mt-auto font-bold text-purple-600 flex items-center hover:underline">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">品牌行銷</h3>
+                    <p class="text-slate-500 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">從核心價值到視覺識別。提升品牌的溢價空間與顧客忠誠度。</p>
+                    <a href="#" class="mt-auto font-bold text-purple-600 flex items-center hover:underline text-sm">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
                 </div>
 
                 <!-- 行銷顧問 -->
-                <div class="section-card bg-white p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-right">
-                    <div class="w-16 h-16 bg-green-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-green-200">
-                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                <div class="section-card bg-white p-8 md:p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-right">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-green-600 text-white rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-xl shadow-green-200">
+                        <i data-lucide="trending-up" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4">行銷顧問</h3>
-                    <p class="text-slate-500 mb-8 leading-relaxed">針對各產業痛點提供 1 對 1 深度諮詢。從商業佈局到行銷流程自動化，我們不只給建議，更陪您一起落地執行。</p>
-                    <ul class="space-y-3 text-sm font-bold text-slate-600 mb-8">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i> 商業模式深度診斷</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i> 全年度行銷排程規劃</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-green-600 mr-2"></i> 轉化漏斗優化策略</li>
-                    </ul>
-                    <a href="#" class="mt-auto font-bold text-green-600 flex items-center hover:underline">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">行銷顧問</h3>
+                    <p class="text-slate-500 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">1 對 1 深度諮詢。針對產業痛點提供全年度行銷規劃與診斷。</p>
+                    <a href="#" class="mt-auto font-bold text-green-600 flex items-center hover:underline text-sm">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
                 </div>
 
                 <!-- 廣告投放 -->
-                <div class="section-card bg-white p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-left">
-                    <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-orange-200">
-                        <i data-lucide="target" class="w-8 h-8"></i>
+                <div class="section-card bg-white p-8 md:p-12 rounded-3xl border border-gray-100 flex flex-col items-start" data-aos="fade-left">
+                    <div class="w-14 h-14 md:w-16 md:h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-xl shadow-orange-200">
+                        <i data-lucide="target" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-4">廣告投放</h3>
-                    <p class="text-slate-500 mb-8 leading-relaxed">Meta (FB/IG)、Google、LINE 廣告代操。透過嚴謹的 A/B Testing 與像素追蹤，將您的 ROAS (廣告投資回報率) 極大化。</p>
-                    <ul class="space-y-3 text-sm font-bold text-slate-600 mb-8">
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-orange-500 mr-2"></i> 數據導向精準投遞</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-orange-500 mr-2"></i> 每週數據成效回報</li>
-                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-orange-500 mr-2"></i> 廣告素材不間斷更新</li>
-                    </ul>
-                    <a href="#" class="mt-auto font-bold text-orange-500 flex items-center hover:underline">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">廣告投放</h3>
+                    <p class="text-slate-500 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">Meta / Google 廣告代操。透過數據追蹤，將您的 ROAS 回報率極大化。</p>
+                    <a href="#" class="mt-auto font-bold text-orange-500 flex items-center hover:underline text-sm">了解細節 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 第四屏：簡易流程介紹 -->
-    <section id="process" class="py-32 bg-white overflow-hidden">
+    <section id="process" class="py-20 md:py-32 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-4xl font-black mb-4">合作流程與對接</h2>
-                <p class="text-slate-500">透明、高效率的執行進度管控</p>
+            <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black mb-4">合作流程</h2>
+                <p class="text-slate-500">透明化對接，高效推進專案。</p>
             </div>
 
             <div class="relative">
-                <div class="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-gray-100 z-0"></div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- 桌機連接線 -->
+                <div class="hidden lg:block absolute top-10 left-0 w-full h-0.5 bg-slate-100 z-0"></div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 relative z-10">
                     <!-- 步驟 1 -->
-                    <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-20 h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-xl shadow-blue-200">1</div>
-                        <h4 class="text-xl font-black mb-3">需求諮詢</h4>
-                        <p class="text-slate-500 text-sm">預約 1 對 1 訪談<br>分析品牌現狀與目標</p>
-                        <div class="mt-4 text-xs font-bold text-blue-600">預計耗時：1 小時</div>
+                    <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl md:text-2xl mb-6 shadow-lg">1</div>
+                        <h4 class="text-lg md:text-xl font-black mb-3">需求諮詢</h4>
+                        <p class="text-slate-500 text-sm">1 對 1 目標訪談分析</p>
                     </div>
                     <!-- 步驟 2 -->
-                    <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-20 h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-xl shadow-blue-200">2</div>
-                        <h4 class="text-xl font-black mb-3">策略報價</h4>
-                        <p class="text-slate-500 text-sm">提供專屬執行方案<br>與詳細費用清單</p>
-                        <div class="mt-4 text-xs font-bold text-blue-600">預計耗時：2-3 工作日</div>
+                    <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl md:text-2xl mb-6 shadow-lg">2</div>
+                        <h4 class="text-lg md:text-xl font-black mb-3">策略報價</h4>
+                        <p class="text-slate-500 text-sm">提供專屬報價單與方案</p>
                     </div>
                     <!-- 步驟 3 -->
-                    <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-20 h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-xl shadow-blue-200">3</div>
-                        <h4 class="text-xl font-black mb-3">簽約執行</h4>
-                        <p class="text-slate-500 text-sm">專屬群組對接<br>每週回報執行進度</p>
-                        <div class="mt-4 text-xs font-bold text-blue-600">預計耗時：視專案規模</div>
+                    <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl md:text-2xl mb-6 shadow-lg">3</div>
+                        <h4 class="text-lg md:text-xl font-black mb-3">簽約執行</h4>
+                        <p class="text-slate-500 text-sm">正式啟動與進度回報</p>
                     </div>
                     <!-- 步驟 4 -->
-                    <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="400">
-                        <div class="w-20 h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-xl shadow-blue-200">4</div>
-                        <h4 class="text-xl font-black mb-3">成效驗收</h4>
-                        <p class="text-slate-500 text-sm">產出數據結案報告<br>提供下一階段建議</p>
-                        <div class="mt-4 text-xs font-bold text-blue-600">預計耗時：每月底/季末</div>
+                    <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl md:text-2xl mb-6 shadow-lg">4</div>
+                        <h4 class="text-lg md:text-xl font-black mb-3">成效驗收</h4>
+                        <p class="text-slate-500 text-sm">結案報告與數據優化</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 服務排程時間 -->
-            <div class="mt-24 p-10 bg-slate-900 rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between" data-aos="zoom-in">
-                <div class="mb-8 md:mb-0">
-                    <h3 class="text-2xl font-black mb-2 flex items-center"><i data-lucide="clock" class="mr-3 text-blue-400"></i> 對接服務時程</h3>
-                    <p class="text-slate-400">我們重視溝通效率，保證 24 小時內必有回覆。</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 w-full md:w-auto">
-                    <div class="text-center md:text-left">
-                        <div class="text-xs text-slate-500 font-bold uppercase mb-1">辦公時間</div>
-                        <div class="font-bold">09:30 - 18:30</div>
-                        <div class="text-xs text-slate-500 italic">週一至週五</div>
+            <!-- 時間細節區塊 (RWD) -->
+            <div class="mt-16 md:mt-24 p-8 md:p-12 bg-slate-900 rounded-[2.5rem] text-white" data-aos="zoom-in">
+                <div class="flex flex-col lg:flex-row items-center justify-between text-center lg:text-left">
+                    <div class="mb-8 lg:mb-0">
+                        <h3 class="text-xl md:text-2xl font-black mb-2 flex items-center justify-center lg:justify-start">
+                            <i data-lucide="clock" class="mr-3 text-blue-400"></i> 對接服務時程
+                        </h3>
+                        <p class="text-slate-400 text-sm">高效響應是我們的核心優勢。</p>
                     </div>
-                    <div class="text-center md:text-left">
-                        <div class="text-xs text-slate-500 font-bold uppercase mb-1">緊急回應</div>
-                        <div class="font-bold">2 小時內</div>
-                        <div class="text-xs text-slate-500 italic">僅限合約內重大案件</div>
-                    </div>
-                    <div class="text-center md:text-left col-span-2 md:col-span-1">
-                        <div class="text-xs text-slate-500 font-bold uppercase mb-1">一般諮詢</div>
-                        <div class="font-bold">24 小時內回覆</div>
-                        <div class="text-xs text-slate-500 italic">Line / Email</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 第五屏：關於我們 / 團隊介紹 -->
-    <section id="about" class="py-32 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-4xl font-black mb-4">專業核心團隊</h2>
-                <p class="text-slate-500">集結頂尖專家，打造您的品牌守護隊</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- 成員 1 -->
-                <div class="bg-white rounded-[2rem] overflow-hidden group border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-[28rem] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Team 1">
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="bg-white/90 backdrop-blur p-4 rounded-2xl">
-                                <h3 class="text-xl font-black mb-1">James Chen</h3>
-                                <p class="text-blue-600 text-sm font-bold">行銷總監 / 策略官</p>
-                            </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 w-full lg:w-auto border-t lg:border-t-0 border-slate-800 pt-8 lg:pt-0">
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold uppercase mb-1">對接反應</div>
+                            <div class="text-lg font-bold">2 小時內</div>
                         </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">超過 10 年電商操作經驗，曾協助多個品牌從 0 到 1 建立千萬營收體系。擅長高客單價產品的佈局。</p>
-                        <div class="flex items-center justify-between pt-6 border-t border-gray-100">
-                            <div class="flex space-x-3">
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-                            </div>
-                            <a href="#" class="text-xs font-black uppercase tracking-widest text-blue-600 flex items-center hover:translate-x-1 transition-transform">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold uppercase mb-1">提案生成</div>
+                            <div class="text-lg font-bold">3 工作日</div>
                         </div>
-                    </div>
-                </div>
-                <!-- 成員 2 -->
-                <div class="bg-white rounded-[2rem] overflow-hidden group border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-[28rem] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Team 2">
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="bg-white/90 backdrop-blur p-4 rounded-2xl">
-                                <h3 class="text-xl font-black mb-1">Sarah Wang</h3>
-                                <p class="text-purple-600 text-sm font-bold">創意設計組長</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">曾任 4A 廣告公司藝術指導。專精於品牌視覺美學與高轉化率銷售頁設計，讓視覺轉化為實際購買。</p>
-                        <div class="flex items-center justify-between pt-6 border-t border-gray-100">
-                            <div class="flex space-x-3">
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-purple-600 hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-purple-600 hover:text-white transition"><i data-lucide="dribbble" class="w-4 h-4"></i></a>
-                            </div>
-                            <a href="#" class="text-xs font-black uppercase tracking-widest text-purple-600 flex items-center hover:translate-x-1 transition-transform">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- 成員 3 -->
-                <div class="bg-white rounded-[2rem] overflow-hidden group border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-[28rem] relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="Team 3">
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="bg-white/90 backdrop-blur p-4 rounded-2xl">
-                                <h3 class="text-xl font-black mb-1">Mike Huang</h3>
-                                <p class="text-red-600 text-sm font-bold">影音製作人</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <p class="text-slate-500 text-sm leading-relaxed mb-8">TikTok 官方合作創作者，掌握時下最流行的運鏡與剪輯技巧。為品牌打造多支百萬播放量爆款影片。</p>
-                        <div class="flex items-center justify-between pt-6 border-t border-gray-100">
-                            <div class="flex space-x-3">
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-red-600 hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                                <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:bg-red-600 hover:text-white transition"><i data-lucide="youtube" class="w-4 h-4"></i></a>
-                            </div>
-                            <a href="#" class="text-xs font-black uppercase tracking-widest text-red-600 flex items-center hover:translate-x-1 transition-transform">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
+                        <div>
+                            <div class="text-[10px] text-slate-500 font-bold uppercase mb-1">辦公時間</div>
+                            <div class="text-lg font-bold text-blue-400 italic">09:30-18:30</div>
                         </div>
                     </div>
                 </div>
@@ -440,102 +367,105 @@
         </div>
     </section>
 
-    <!-- 第六屏：聯絡我們 -->
-    <section id="contact" class="py-32 bg-white relative">
+    <!-- 第五屏：團隊介紹 -->
+    <section id="about" class="py-20 md:py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black mb-4">專家團隊</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- James -->
+                <div class="bg-white rounded-[2rem] overflow-hidden group shadow-sm" data-aos="fade-up">
+                    <div class="h-80 md:h-[28rem] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-black">James Chen</h3>
+                        <p class="text-blue-600 text-sm font-bold mb-4">策略總監</p>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">擅長從零開始構建千萬級電商體系。</p>
+                        <a href="#" class="text-xs font-black uppercase tracking-widest text-slate-800 flex items-center hover:text-blue-600 transition">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <!-- Sarah -->
+                <div class="bg-white rounded-[2rem] overflow-hidden group shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-80 md:h-[28rem] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-black">Sarah Wang</h3>
+                        <p class="text-purple-600 text-sm font-bold mb-4">創意設計組長</p>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">專精視覺心理學與銷售頁邏輯設計。</p>
+                        <a href="#" class="text-xs font-black uppercase tracking-widest text-slate-800 flex items-center hover:text-purple-600 transition">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <!-- Mike -->
+                <div class="bg-white rounded-[2rem] overflow-hidden group shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-80 md:h-[28rem] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-black">Mike Huang</h3>
+                        <p class="text-red-600 text-sm font-bold mb-4">影音製作人</p>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">掌握流量密碼，打造多個百萬播放爆款。</p>
+                        <a href="#" class="text-xs font-black uppercase tracking-widest text-slate-800 flex items-center hover:text-red-600 transition">View Works <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第六屏：聯絡我們 (RWD 佈局) -->
+    <section id="contact" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
                 <div data-aos="fade-right">
-                    <h2 class="text-5xl font-black mb-8 leading-tight">準備好提升您的<br><span class="text-gradient">品牌競爭力</span>了嗎？</h2>
-                    <p class="text-slate-500 mb-12 text-lg">預約首次 30 分鐘免費診斷訪談，我們將為您找出隱藏的增長機會點。</p>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight text-center lg:text-left">啟動您的<br><span class="text-gradient">品牌增長</span></h2>
+                    <p class="text-slate-500 mb-10 text-base md:text-lg text-center lg:text-left">填寫表單，預約 30 分鐘免費諮詢訪談。</p>
                     
-                    <div class="space-y-8">
-                        <div class="flex items-start">
-                            <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mr-6">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">電子郵件</h4>
-                                <p class="text-xl font-black">hello@marketingpro.tw</p>
-                            </div>
+                    <div class="hidden lg:block space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center"><i data-lucide="mail"></i></div>
+                            <span class="font-bold">hello@marketingpro.tw</span>
                         </div>
-                        <div class="flex items-start">
-                            <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mr-6">
-                                <i data-lucide="message-square"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-1">官方 LINE</h4>
-                                <p class="text-xl font-black">@marketing_pro_tw</p>
-                            </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center"><i data-lucide="message-square"></i></div>
+                            <span class="font-bold">LINE: @marketing_pro</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 p-10 md:p-14 rounded-[3rem] border border-gray-100" data-aos="fade-left">
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-sm font-black text-slate-700">姓名</label>
-                                <input type="text" class="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition bg-white" placeholder="請輸入姓名">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm font-black text-slate-700">公司名稱</label>
-                                <input type="text" class="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition bg-white" placeholder="若為個人請填寫自僱">
-                            </div>
+                <div class="bg-slate-50 p-6 md:p-12 rounded-[2.5rem]" data-aos="fade-left">
+                    <form class="space-y-4 md:space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="姓名" class="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none">
+                            <input type="text" placeholder="公司" class="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none">
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-black text-slate-700">感興趣的服務</label>
-                            <select class="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition bg-white appearance-none">
-                                <option>請選擇預約類別...</option>
-                                <option>短影音行銷一條龍</option>
-                                <option>品牌全案規劃</option>
-                                <option>廣告代操顧問</option>
-                                <option>企業內訓/課程</option>
-                            </select>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-sm font-black text-slate-700">需求簡述</label>
-                            <textarea rows="4" class="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition bg-white" placeholder="告訴我們您的預算範圍或目前的痛點..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition shadow-xl shadow-blue-200 text-lg">送出預約，開啟增長之旅</button>
+                        <select class="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none appearance-none bg-white">
+                            <option>預約類別...</option>
+                            <option>短影音製作</option>
+                            <option>廣告代操</option>
+                            <option>全案規劃</option>
+                        </select>
+                        <textarea rows="4" placeholder="需求簡述..." class="w-full px-5 py-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-black py-5 rounded-xl hover:bg-blue-700 shadow-xl shadow-blue-200 transition">提交申請</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 第七屏：相關簡易資訊 (Footer) -->
-    <footer class="bg-slate-900 text-white py-20">
+    <!-- Footer (RWD) -->
+    <footer class="bg-slate-900 text-white py-12 md:py-20 text-center">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16 pb-16 border-b border-white/10">
-                <div class="col-span-1 md:col-span-2">
-                    <span class="text-3xl font-black text-white mb-6 block tracking-tighter">MARKETING PRO</span>
-                    <p class="text-slate-400 max-w-sm text-lg leading-relaxed">我們不只是您的代理商，更是您的商業夥伴。致力於透過數據與創意的結合，在數位時代為品牌創造價值。</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-8 text-blue-400 uppercase tracking-widest text-sm">快速導覽</h4>
-                    <ul class="space-y-4 text-slate-400 font-bold">
-                        <li><a href="#home" class="hover:text-white transition">服務首頁</a></li>
-                        <li><a href="#services" class="hover:text-white transition">行銷方案</a></li>
-                        <li><a href="#process" class="hover:text-white transition">服務時程</a></li>
-                        <li><a href="#about" class="hover:text-white transition">專家團隊</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-8 text-blue-400 uppercase tracking-widest text-sm">社群追蹤</h4>
-                    <div class="flex space-x-5">
-                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition duration-300"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-pink-600 transition duration-300"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                        <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-red-600 transition duration-300"><i data-lucide="youtube" class="w-6 h-6"></i></a>
-                    </div>
-                </div>
+            <span class="text-xl md:text-2xl font-black tracking-tighter block mb-8">MARKETING PRO</span>
+            <div class="flex flex-wrap justify-center gap-6 mb-12 text-slate-400 text-sm font-bold uppercase">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#services" class="hover:text-white transition">Services</a>
+                <a href="#process" class="hover:text-white transition">Process</a>
+                <a href="#about" class="hover:text-white transition">About</a>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs font-bold uppercase tracking-widest">
-                <p>© 2024 Marketing Pro Agency Taiwan. 卓越行銷有限公司</p>
-                <div class="flex space-x-8 mt-6 md:mt-0">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                </div>
-            </div>
+            <p class="text-slate-600 text-[10px] md:text-xs tracking-widest">© 2024 MARKETING PRO AGENCY TAIWAN.</p>
         </div>
     </footer>
 
@@ -547,11 +477,40 @@
         AOS.init({
             duration: 1000,
             once: true,
-            offset: 150,
-            easing: 'ease-out-back'
+            offset: 50,
+            easing: 'ease-out'
         });
 
-        // 輪播邏輯
+        // 行動版選單開關邏輯
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // 重新渲染圖標
+        });
+
+        // 點擊連結後自動收起選單
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                isMenuOpen = false;
+                lucide.createIcons();
+            });
+        });
+
+        // 輪播邏輯 (RWD 適配)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.nav-dot');
@@ -559,30 +518,26 @@
         function setSlide(index) {
             slides[currentSlide].classList.remove('active');
             dots[currentSlide].classList.remove('dot-active');
-            
             currentSlide = index;
-            
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('dot-active');
         }
 
-        // 自動輪播
-        let slideInterval = setInterval(() => {
-            let next = (currentSlide + 1) % slides.length;
-            setSlide(next);
-        }, 5000);
-
-        // 點擊點後重置計時器
         function manualSetSlide(index) {
             clearInterval(slideInterval);
             setSlide(index);
+            startAutoSlide();
+        }
+
+        let slideInterval;
+        function startAutoSlide() {
             slideInterval = setInterval(() => {
                 let next = (currentSlide + 1) % slides.length;
                 setSlide(next);
             }, 5000);
         }
 
-        // 初始化第一個點
+        startAutoSlide();
         dots[0].classList.add('dot-active');
     </script>
 </body>
